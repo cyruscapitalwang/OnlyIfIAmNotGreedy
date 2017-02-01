@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+
+
+	<changeSet author="twang" id="1">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="MEO_DEL_LT_output" />
+		</preConditions>
+		<dropTable tableName="MEO_DEL_LT_output" />
+	</changeSet>
+
+
+	<changeSet author="twang" id="2">
+		<createTable tableName="MEO_DEL_LT_output">
+			<column name="skul_no" type="numeric(10,0)">
+				<constraints nullable="false" />
+			</column>
+			<column name="iteration_no" type="numeric(3,0)">
+				<constraints nullable="false" />
+			</column>
+			<column name="day" type="numeric(10,6)">
+				<constraints nullable="false" />
+			</column>
+			<column name="sl_achieved" type="numeric(10,6)">
+				<constraints nullable="false" />
+			</column>
+			<column name="min_sl" type="numeric(10,6)">
+				<constraints nullable="true" />
+			</column>
+
+
+		</createTable>
+		<addPrimaryKey tableName="MEO_DEL_LT_output"
+			columnNames="skul_no,iteration_no,day" constraintName="PK_MEO_DEL_LT_output" />
+	</changeSet>
+
+
+
+
+</databaseChangeLog>
