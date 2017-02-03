@@ -22,11 +22,8 @@ public class QueryQuoteFromGoogleTest {
 	@Test
 	public void timeZone(){
 		long time = 1483972200;
+		
 		LocalDateTime date = LocalDateTime.ofEpochSecond(time, 0, ZoneOffset.ofTotalSeconds(-300));
-		
-		
-		
-		
 		System.out.println(date);
 	}
 }
