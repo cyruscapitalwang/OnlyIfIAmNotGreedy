@@ -7,34 +7,40 @@
 
 	<changeSet author="twang" id="1">
 		<preConditions onFail="MARK_RAN">
-			<tableExists tableName="MEO_DEL_LT_output" />
+			<tableExists tableName="stock_quote" />
 		</preConditions>
-		<dropTable tableName="MEO_DEL_LT_output" />
+		<dropTable tableName="stock_quote" />
 	</changeSet>
 
 
 	<changeSet author="twang" id="2">
-		<createTable tableName="MEO_DEL_LT_output">
-			<column name="skul_no" type="numeric(10,0)">
+		<createTable tableName="stock_quote">
+			<column name="ticker" type="varchar(10)">
 				<constraints nullable="false" />
 			</column>
-			<column name="iteration_no" type="numeric(3,0)">
+			<column name="period" type="datetime">
 				<constraints nullable="false" />
 			</column>
-			<column name="day" type="numeric(10,6)">
+			<column name="open" type="numeric(10,4)">
 				<constraints nullable="false" />
 			</column>
-			<column name="sl_achieved" type="numeric(10,6)">
+			<column name="high" type="numeric(10,4)">
 				<constraints nullable="false" />
 			</column>
-			<column name="min_sl" type="numeric(10,6)">
-				<constraints nullable="true" />
+			<column name="low" type="numeric(10,4)">
+				<constraints nullable="false" />
+			</column>
+			<column name="close" type="numeric(10,4)">
+				<constraints nullable="false" />
+			</column>
+			<column name="volume" type="numeric(10,0)">
+				<constraints nullable="false" />
 			</column>
 
 
 		</createTable>
-		<addPrimaryKey tableName="MEO_DEL_LT_output"
-			columnNames="skul_no,iteration_no,day" constraintName="PK_MEO_DEL_LT_output" />
+		<addPrimaryKey tableName="stock_quote" columnNames="ticker,period"
+			constraintName="PK_stock_quote" />
 	</changeSet>
 
 
